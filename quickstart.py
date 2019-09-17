@@ -40,13 +40,13 @@ def main():
 
     # Call the Drive v3 API
     # file_metadata = {
-    #     'name': 'Invoices',
+    #     'name': 'Memes',
     #     'mimeType': 'application/vnd.google-apps.folder'
     # }
-    # file = service.files().create(body=file_metadata,
-    #                               fields='id').execute()
-    # 1LZGb06usjNOvaVRDdLhblAYCw0N85xYj id folder where we'll upload our pictures
-    folder_id = '1LZGb06usjNOvaVRDdLhblAYCw0N85xYj'
+    # folder = service.files().create(body=file_metadata,
+    #                             fields='id').execute()
+    # 1he4gTAL2kpQPfs9w0Z420_Mw6Vgvpm-d id folder where we'll upload our pictures
+    folder_id = '1he4gTAL2kpQPfs9w0Z420_Mw6Vgvpm-d'
     for currentFile in os.listdir(sys.argv[1]):
         mime = MimeTypes()
         absFilePath = os.path.abspath(os.path.join(sys.argv[1], currentFile))
@@ -58,7 +58,7 @@ def main():
                 response = service.files().list(q="name='" + currentFile + "'").execute()
                 if not response.get('files', []):
                     service.files().create(body=meme_file, media_body=media, fields='id').execute()
-    print('all files uploaded')
+    print('all pics uploaded')
 # results = service.files().list(
 #     pageSize=10, fields="nextPageToken, files(id, name)").execute()
 # items = results.get('files', [])
